@@ -10,6 +10,6 @@ func TestSum(t *testing.T) {
 	v = Sum(2, 2)
 	// assert
 	if v != expect {
-		t.Error("expect 4, got", v)
+		t.Errorf("expect %d, got %d", expect, v)
 	}
 }
