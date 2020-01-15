@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type humano interface {
 	hablar()
@@ -8,7 +10,7 @@ type humano interface {
 
 type persona struct {
 	nombres string
-	edad int
+	edad    int
 }
 
 func main() {
@@ -17,12 +19,13 @@ func main() {
 		edad:    30,
 	}
 	diAlgo1(p)
-	diAlgo2(&p)
-	diAlgo3(&p)
+	//diAlgo2(&p)
+	//diAlgo3(&p)
 }
 
-func (p *persona) hablar()  {
-	fmt.Printf("%s de %d años está hablando\n", p.nombres,p.edad)
+func (p *persona) hablar() {
+	fmt.Printf("%s de %d años está hablando\n", p.nombres, p.edad)
+	prueba(*p, p, p)
 }
 
 func diAlgo1(p persona) {
@@ -35,4 +38,10 @@ func diAlgo2(p *persona) {
 
 func diAlgo3(p humano) {
 	p.hablar()
+}
+
+func prueba(p persona, ptr *persona, pi interface{}) {
+	fmt.Printf("Persona es de tipo: %T\n", p)
+	fmt.Printf("Puntero Persona es de tipo: %T\n", ptr)
+	fmt.Printf("Interfaz es de tipo: %T\n", pi)
 }
